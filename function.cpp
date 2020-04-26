@@ -274,18 +274,17 @@ void rmdir()
 void help()
 {
 	FILE* help;
-	if ((help = fopen("../help.mk", "r")) != NULL)
-	{
-		const int size = 2168 * 2 + 1;
-		char buf[size] = { '\0' };
-		fscanf(help, "%4336[^~?]", buf);
-		wchar_t buffer_wchar[size / 2 + 1] = { '\0' };
-		MultiByteToWideChar(CP_UTF8, 0, buf, -1, buffer_wchar, strlen(buf));
-		wprintf(L"%ls\n", buffer_wchar);
-		fclose(help);
-	}
-	else
-	{
-		wprintf(L"Файл с функционалом открывается только при запуске программы черех .exe(из-за расположения файла с информацией) \n");
-	}
+	if ((help = fopen("../help.mk", "r")) == NULL)
+		if ((help = fopen("help.mk", "r")) == NULL)
+		{
+			wprintf(L"Файл с функционалом не открылся\n");
+			return;
+		}
+	const int size = 2168 * 2 + 1;
+	char buf[size] = { '\0' };
+	fscanf(help, "%4336[^~?]", buf);
+	wchar_t buffer_wchar[size / 2 + 1] = { '\0' };
+	MultiByteToWideChar(CP_UTF8, 0, buf, -1, buffer_wchar, strlen(buf));
+	wprintf(L"%ls\n", buffer_wchar);
+	fclose(help);
 }
