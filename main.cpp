@@ -1,25 +1,23 @@
-#include <iostream>
-#include <Windows.h>
 #include "function.h"
 
 int numERROR = 0;
 wchar_t ATTRIBUTES[300] = { '\0' };
 wchar_t LOCATION[200] = { '\0' };
-list <wchar_t*> CATALOG;
-list <wstring> CATALOG_COMMAND= {L"q",				//+ Выход
-								L"cd",				//+ Переход
-								L"ls",				//+ Содержание
-								L"touch",			//+ создать
-								L"rm",				//- удалить
-								L"mkdir",			//+ Создать дир.
-								L"rmdir",			//- удалить дир.
-								L"help",			//+ помощь
-								L"clear"};			//+ очистить консоль
+list <wstring> CATALOG_COMMAND= {L"q",	
+								L"cd",	
+								L"ls",	
+								L"touch",
+								L"rm",	
+								L"mkdir",
+								L"rmdir",
+								L"help",
+								L"clear"};
+
 int main()
 {
 	setlocale(0, "rus_rus.866");
 	wprintf(L"\t\tКурсовая работа студента группы 9395\n\t\tАвтор: ШУМЕЙКО АЛЕКСАНДР\n----------------------------------------\nДля открытия справки введите help\n");
-	lstrcatW(LOCATION, L"D:\\\TEST\\*");
+	lstrcatW(LOCATION, L"D:\\*");
 	wchar_t COMMAND[100] = { '\0' };
 	while (1)
 	{
