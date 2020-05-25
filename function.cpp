@@ -120,7 +120,6 @@ void ls(bool atr)
 	{
 		do
 		{
-			//CATALOG.push_back(strdup(FindFileData.cFileName));
 			wprintf(L"%s\n", FindFileData.cFileName);
 		} while (FindNextFile(hf, &FindFileData) != 0);
 		FindClose(hf);
